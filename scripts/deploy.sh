@@ -1,9 +1,7 @@
 #!/bin/bash
-echo "🚀 Deploying infrastructure..."
-
-cd ../terraform
-terraform init
+set -e
+echo "🚀 Deploying..."
+cd terraform  # ✅ NOT ../terraform
+terraform init -upgrade
 terraform apply -auto-approve
-
-echo "✅ Deployment complete!"
-echo "🧪 Test your API at: http://$(terraform output -raw alb_dns_name)"
+echo "✅ Done! ALB: http://$(terraform output -raw alb_dns_name)"

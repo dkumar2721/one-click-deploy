@@ -1,7 +1,6 @@
 #!/bin/bash
-echo "🗑️ Destroying infrastructure..."
-
-cd ../terraform
+set -e
+echo "🗑️ Destroying..."
+cd terraform  # ✅ NOT ../terraform
 terraform destroy -auto-approve
-
-echo "✅ All resources deleted."
+echo "✅ Cleaned up!""

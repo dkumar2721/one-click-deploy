@@ -1,16 +1,19 @@
+# modules/launch-template/main.tf
 resource "aws_launch_template" "api" {
-  name_prefix   = "api-"
-  image_id      = "ami-0e86e58725bfbe893"  # Amazon Linux 2023 (us-east-1)
+  image_id      = var.ami_id    # ← must use the variable
   instance_type = "t3.micro"
 
-  vpc_security_group_ids = [var.ec2_sg_id]
+  network_interfaces {
+    associate_public_ip_address = false
+    security_groups             = [var.ec2_sg_id]
+  }
+
   iam_instance_profile {
     name = var.instance_profile_name
   }
 
-  user_data = base64encode(templatefile("${path.module}/userdata.sh.tftpl", {
-    port = var.app_port
-  }))
+  # Optional: user_data to start your app (via templatefile or inline)
+  user_data = base64encode(templatefile("${path.module}/userdata.sh.tftpl", {}))
 
   tag_specifications {
     resource_type = "instance"

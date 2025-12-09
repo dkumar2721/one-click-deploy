@@ -1,24 +1,10 @@
 # Terraform
+terraform.tfstate
+terraform.tfstate.backup
 .terraform/
-*.tfstate
-*.tfstate.backup
-*.tfvars
-.terraform.lock.hcl
+*.tfvars  # optional — remove this line if you want to commit tfvars
 
 # Logs & temp files
 *.log
-nohup.out
-
-# OS
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# IDE
-.vscode/
 *.swp
-*.swo

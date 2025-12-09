@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Hello from private EC2! 🌐\n"
+    return "HELLO Apt ,DONE BY DK 🌐\n"
 
 @app.route('/health')
 def health():

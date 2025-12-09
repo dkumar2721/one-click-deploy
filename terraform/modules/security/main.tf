@@ -1,4 +1,4 @@
-                                                                                   ~                                           resource "aws_security_group" "alb_sg" {
+ resource "aws_security_group" "alb_sg" {
   name        = "alb-sg"
   description = "Allow HTTP/HTTPS from internet"
   vpc_id      = var.vpc_id

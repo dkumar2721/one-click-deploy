@@ -1,11 +1,8 @@
 #!/bin/bash
-yum update -y
-yum install -y python3 pip git
+dnf update -y
+dnf install -y python3-pip git
 
-# Install CloudWatch agent (optional but good practice)
-yum install -y amazon-cloudwatch-agent
-
-# Clone or create app
+# Create app
 mkdir -p /home/ec2-user/app
 cat > /home/ec2-user/app/app.py << 'EOF'
 from flask import Flask
@@ -22,7 +19,7 @@ def health():
     return "ok\n"
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', ${port}))
+    port = int(os.environ.get('PORT', 8080))  # ← hardcoded fallback
     app.run(host='0.0.0.0', port=port)
 EOF
 
@@ -35,3 +32,4 @@ pip3 install -r requirements.txt
 
 # Run app in background
 nohup python3 app.py > /var/log/api.log 2>&1 &
+echo "App started on port 8080"
