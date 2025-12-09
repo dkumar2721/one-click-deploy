@@ -1,0 +1,17 @@
+# app/app.py
+from flask import Flask
+import os
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Hello from private EC2! 🌐\n"
+
+@app.route('/health')
+def health():
+    return "ok\n"
+
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 8080))
+    app.run(host='0.0.0.0', port=port)
