@@ -4,7 +4,7 @@ DevOps assignment: One-click REST API on AWS
 
 +-------------------+
 |      Client       |
-| (Browser / curl)  |
+|                   |
 +--------+----------+
          |
          | HTTP/HTTPS (Port 80/443)
