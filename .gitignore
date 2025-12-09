@@ -1,10 +1,5 @@
-# Terraform
+.terraform/
 terraform.tfstate
 terraform.tfstate.backup
-.terraform/
-*.tfvars  # optional — remove this line if you want to commit tfvars
-
-# Logs & temp files
 *.log
 .DS_Store
-*.swp
